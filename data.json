@@ -1,0 +1,15 @@
+{
+  "students": [
+    { "name": "John Wilson", "latitude": 34.069149, "longitude": -118.442639 },
+    { "name": "Jane Graham", "latitude": 34.069601, "longitude": -118.441862 },
+    { "name": "Pam Bam", "latitude": 34.071513, "longitude": -118.441181 },
+    { "name": "Rommel Loayza", "latitude": 1000, "longitude": -200 }
+  ],
+  "classrooms": [
+    { "name": "Principles of computational geo-location analysis", "latitude": 34.069140, "longitude": -118.442689 },
+    { "name": "Sedimentary Petrology", "latitude": 34.069585, "longitude": -118.441878 },
+    { "name": "Introductory Psychobiology", "latitude": 34.069742, "longitude": -118.441312 },
+    { "name": "Art of Listening", "latitude": 34.070223, "longitude": -118.440193 },
+    { "name": "Art Hitory", "latitude": 34.071528, "longitude": -118.441211 }
+  ]
+}
