@@ -18,7 +18,9 @@
  
  * Visitor pattern has been used. Classroom and Student classes accept visitors that will perform specific business logic. 
  * Class diagram is below:
+ 
  ![Visitors Class diagram](docs/StudentLocator.png)
+ 
  * ClassroomVisitor visits a Classroom and then will have StudentVisitor to visit each of the students to check Students location against Classroom location.
  * StudentVisitor uses the LocationChecker in order to check the location in each of the Classroom quadrants.
  * If Student is found then is added to the FoundStudentsStore singleton. 
