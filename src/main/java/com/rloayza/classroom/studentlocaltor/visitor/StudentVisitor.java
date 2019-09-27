@@ -1,6 +1,7 @@
 package com.rloayza.classroom.studentlocaltor.visitor;
 
 import com.rloayza.classroom.studentlocaltor.FoundStudentsStore;
+import com.rloayza.classroom.studentlocaltor.LocationChecker;
 import com.rloayza.classroom.studentlocaltor.model.Student;
 
 public class StudentVisitor implements Visitor{
@@ -20,88 +21,33 @@ public class StudentVisitor implements Visitor{
             return;
         }
 
+        LocationChecker locationChecker = new LocationChecker(classroomLatitude, classroomLongitude);
+
         System.out.println("Checking "+student.toString());
 
-        if(checkFirstQuadrant(student.getLatitude(), student.getLongitude())) {
+        if(locationChecker.checkFirstQuadrant(student.getLatitude(), student.getLongitude())) {
             FoundStudentsStore.getInstance().addStudent(student);
             System.out.println("Found "+student.getName()+" between "+classroomLatitude+":"+classroomLongitude);
             return;
         }
 
-        if(checkSecondQuadrant(student.getLatitude(), student.getLongitude())) {
+        if(locationChecker.checkSecondQuadrant(student.getLatitude(), student.getLongitude())) {
             FoundStudentsStore.getInstance().addStudent(student);
             System.out.println("Found "+student.getName()+" between "+classroomLatitude+":"+classroomLongitude);
             return;
         }
 
-        if(checkThirdQuadrant(student.getLatitude(), student.getLongitude())) {
+        if(locationChecker.checkThirdQuadrant(student.getLatitude(), student.getLongitude())) {
             FoundStudentsStore.getInstance().addStudent(student);
             System.out.println("Found "+student.getName()+" between "+classroomLatitude+":"+classroomLongitude);
             return;
         }
 
-        if(checkFourthQuadrant(student.getLatitude(), student.getLongitude())) {
+        if(locationChecker.checkFourthQuadrant(student.getLatitude(), student.getLongitude())) {
             FoundStudentsStore.getInstance().addStudent(student);
             System.out.println("Found "+student.getName()+" between "+classroomLatitude+":"+classroomLongitude);
             return;
         }
 
     }
-
-    private Boolean checkFirstQuadrant(Double latitude, Double longitude) {
-
-        Double latLimit = classroomLatitude + 10;
-        Double longLimit = classroomLongitude - 10;
-
-        Boolean betweenLatLimits = classroomLatitude <= latitude && latLimit >= latitude;
-        Boolean betweenLongLimits = classroomLatitude >= longitude && longLimit <= longitude;
-        if(betweenLatLimits && betweenLongLimits) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private Boolean checkSecondQuadrant(Double latitude, Double longitude) {
-
-        Double latLimit = classroomLatitude + 10;
-        Double longLimit = classroomLongitude + 10;
-
-        Boolean betweenLatLimits = classroomLatitude >= latitude && latLimit >= latitude;
-        Boolean betweenLongLimits = classroomLatitude >= longitude && longLimit <= longitude;
-        if(betweenLatLimits && betweenLongLimits) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private Boolean checkThirdQuadrant(Double latitude, Double longitude) {
-
-        Double latLimit = classroomLatitude - 10;
-        Double longLimit = classroomLongitude + 10;
-
-        Boolean betweenLatLimits = classroomLatitude >= latitude && latLimit <= latitude;
-        Boolean betweenLongLimits = classroomLatitude <= longitude && longLimit >= longitude;
-        if(betweenLatLimits && betweenLongLimits) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private Boolean checkFourthQuadrant(Double latitude, Double longitude) {
-
-        Double latLimit = classroomLatitude - 10;
-        Double longLimit = classroomLongitude - 10;
-
-        Boolean betweenLatLimits = classroomLatitude >= latitude && latLimit <= latitude;
-        Boolean betweenLongLimits = classroomLatitude >= longitude && longLimit <= longitude;
-        if(betweenLatLimits && betweenLongLimits) {
-            return true;
-        }
-
-        return false;
-    }
-
 }

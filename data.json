@@ -10,6 +10,7 @@
     { "name": "Sedimentary Petrology", "latitude": 34.069585, "longitude": -118.441878 },
     { "name": "Introductory Psychobiology", "latitude": 34.069742, "longitude": -118.441312 },
     { "name": "Art of Listening", "latitude": 34.070223, "longitude": -118.440193 },
-    { "name": "Art Hitory", "latitude": 34.071528, "longitude": -118.441211 }
+    { "name": "Art Hitory", "latitude": 34.071528, "longitude": -118.441211 },
+    { "name": "Elements and Algorithms", "latitude": 1001, "longitude": -200.555 }
   ]
 }
