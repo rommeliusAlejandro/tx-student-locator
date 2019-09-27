@@ -1,26 +1,51 @@
 @startuml
-
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+interface Visitor {
+    visit(Visitable visitable)
+}
+interface Visitable {
+    accept(Visitor visitor)
+}
+class ClassroomVisitor {
+    List<Student> students
+    visit(Visitable visitable)
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class StudentVisitor {
+    Double classroomLatitude
+    Double classroomLongitude
+
+    visit(Visitable visitable)
 }
+
+class Student {
+    String name
+    Double latitude
+    Double longitude
+}
+
+class Classroom {
+    String name
+    Double latitude
+    Double longitude
+}
+
+class LocationChecker {
+    Double classroomLatitude
+    Double classroomLongitude
+
+    checkFirstQuadrant(Double latitude, Double longitude)
+    checkSecondQuadrant(Double latitude, Double longitude)
+    checkThirdQuadrant(Double latitude, Double longitude)
+    checkFourthQuadrant(Double latitude, Double longitude)
+}
+
+Visitor <|... ClassroomVisitor
+Visitor <|... StudentVisitor
+
+Visitable <|... Student
+Visitable <|... Classroom
+
+ClassroomVisitor "1" ---* "n" Student
+StudentVisitor "1" ---* "1" LocationChecker
 
 @enduml
